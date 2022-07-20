@@ -9,16 +9,17 @@ records = db.Claims
 i= records.count_documents({})
 print (i)
 
-myquery = { "Author": "Phil Devilleres" }
+myquery = { "Author": "Kai Devilleres" }
 
 mydoc = records.find(myquery)
 for x in mydoc:
   print(x)
 
 author = x['Author']
+claimnumber = x['Claim']['ClaimNumber']
 
 print (author)
-
+print (claimnumber)
 
 app = FastAPI()
 
@@ -26,7 +27,7 @@ app = FastAPI()
 def hello(name = None):
 
     if name is None:
-        text = 'Hoy!' + author
+        text = 'Hoy! ' + str(author)
 
     else:
         text = 'Hoy ' + name + '!' + i
